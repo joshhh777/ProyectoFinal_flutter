@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/screens/homeScreens/home_screen.dart';
-
+import 'package:animated_icon_button/animated_icon_button.dart';
 import 'ninos_screen.dart';
 
 class DetalleeScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ class DetalleeScreen extends StatelessWidget {
                 nombre: nombre,
               ),
               new IniciarIcon(),
-              new Informacion(precio: precio)
+              new Informacion(precio: precio),
               
           ],
         ),
@@ -126,6 +126,7 @@ class IniciarIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: new EdgeInsets.all(10.0),
+      
       child: new Row(
         children: <Widget>[
           new IconTec(
@@ -176,14 +177,51 @@ class Informacion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
-      padding: new EdgeInsets.all(10.0),
-        child: new Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: new Text(
+      padding: new EdgeInsets.all(15.0),
+        child: new Row(
+          children: <Widget>[
+           new Text(
             precio,
             style: new TextStyle(fontSize: 30.0, color: Colors.blue),
           ),
+          AnimatedIconButton(
+          size: 50,
+          onPressed: (){
+           showDialog(
+             barrierDismissible: false,
+              context: context, 
+               builder: (context) => AlertDialog(
+                title: Text("COMPRA EXITOSA"),
+                 content: Text('Gracias por realizar la compra.'),
+                  actions: <Widget>[
+                   FlatButton(
+                      onPressed: (){ 
+                        Navigator.of(context).push(
+                         MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                ),
+                );  
+                  debugPrint("Adultosss");
+                  },
+                  child: Text('OK')
+                 ),
+                     ]
+                     )
+                     );
+          },
+          duration: const Duration(milliseconds: 500),
+          splashColor: Colors.transparent,
+          icons: const <AnimatedIconItem>[
+            AnimatedIconItem(
+              icon: Icon(Icons.add_shopping_cart_rounded, color: Colors.black),
+            ),
+            AnimatedIconItem(
+              icon: Icon(Icons.shopping_cart, color: Colors.white),
+              
+            ),
+          ],
+        ),
+          ],
         ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:provider/provider.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:proyecto_final/servicios/authentication_servicios/auth_services.dart';
 
 class Login extends StatefulWidget {
@@ -37,7 +38,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<AuthServices>(context);
     return Scaffold(
-      body: SafeArea(
+      body: new Container(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -45,7 +46,7 @@ class _LoginState extends State<Login> {
               key: _formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[  
                   IconButton(
                     icon: Icon(Icons.arrow_back_ios,
                     color: Theme.of(context).primaryColor,
@@ -60,6 +61,7 @@ class _LoginState extends State<Login> {
                   ),
                   ),
                   SizedBox(height: 20),
+                  
                   Text("Inicia Sesion para Continuar",
                   style: TextStyle(
                     fontSize: 14,
