@@ -5,12 +5,14 @@ import 'package:provider/provider.dart';
 import 'package:proyecto_final/screens/Authentication/authentication.dart';
 import 'package:proyecto_final/screens/Authentication/login.dart';
 import 'package:proyecto_final/screens/wrapper.dart';
+import 'package:proyecto_final/screens/homeScreens/accesorios_screen.dart';
+import 'package:proyecto_final/screens/homeScreens/ninos_screen.dart';
 import 'package:proyecto_final/servicios/authentication_servicios/auth_services.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
+  
   @override
   Widget build(BuildContext context) {
     final _init = Firebase.initializeApp();

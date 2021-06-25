@@ -25,15 +25,16 @@ class AuthServices with ChangeNotifier {
       setMessage("No esta conectado a internet, intentalo de nuevo");
     }catch (e){
       setLoading(false);
-      print(e);
+      print("error ingreso : $e");
       setMessage(e);
     }
     notifyListeners();
   }
 
   Future login(String email, String password) async{
-    setLoading(true);
+    
     try {
+      setLoading(true);
       UserCredential authResult = await firebaseAuth.signInWithEmailAndPassword(
         email: email, 
         password: password);
